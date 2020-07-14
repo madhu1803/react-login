@@ -10,9 +10,9 @@ class Login extends Component {
   handleSubmit = (event) => {
     alert("email:" + this.state.email);
     alert("password:" + this.state.password);
-    event.preventDefault();
   };
   render() {
+    const { email, password } = this.state;
     return (
       <div className="pl-5 pr-5">
         <form onSubmit={this.handleSubmit}>
@@ -22,7 +22,7 @@ class Login extends Component {
               type="email"
               class="form-control"
               name="email"
-              value={this.state.email}
+              value={email}
               onChange={this.handleChange}
             />
           </div>
@@ -32,11 +32,11 @@ class Login extends Component {
               type="password"
               name="password"
               class="form-control"
-              value={this.state.password}
+              value={password}
               onChange={this.handleChange}
             />
           </div>
-          <button type="submit" class="btn btn-primary">
+          <button type="button" class="btn btn-primary">
             Submit
           </button>
         </form>
