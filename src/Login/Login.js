@@ -1,22 +1,17 @@
 import React, { Component } from "react";
 
 class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { value: "" };
+  state = { email: "", password: "" };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
 
-  handleChange(event) {
-    this.setState({ value: event.target.value });
-  }
-
-  handleSubmit(event) {
-    alert("email" + this.state.value);
+  handleSubmit = (event) => {
+    alert("email:" + this.state.email);
+    alert("password:" + this.state.password);
     event.preventDefault();
-  }
+  };
   render() {
     return (
       <div className="pl-5 pr-5">
@@ -26,13 +21,19 @@ class Login extends Component {
             <input
               type="email"
               class="form-control"
-              value={this.state.value}
+              name="email"
+              value={this.state.email}
               onChange={this.handleChange}
             />
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" />
+            <input
+              type="password"
+              name="password"
+              class="form-control"
+              value={this.state.password}
+            />
           </div>
           <button type="submit" class="btn btn-primary">
             Submit
