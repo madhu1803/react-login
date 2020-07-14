@@ -1,29 +1,38 @@
 import React, { Component } from "react";
 
 class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { value: "" };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({ value: event.target.value });
+  }
+
+  handleSubmit(event) {
+    alert("A name was submitted: " + this.state.value);
+    event.preventDefault();
+  }
   render() {
     return (
       <div className="pl-5 pr-5">
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
             <input
               type="email"
               class="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
+              value={this.state.value}
+              onChange={this.handleChange}
             />
-            <small id="emailHelp" class="form-text text-muted">
-              We'll never share your email with anyone else.
-            </small>
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
-            <input
-              type="password"
-              class="form-control"
-              id="exampleInputPassword1"
-            />
+            <input type="password" class="form-control" />
           </div>
           <button type="submit" class="btn btn-primary">
             Submit
