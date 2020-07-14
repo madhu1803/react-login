@@ -33,6 +33,7 @@ class Login extends Component {
               name="password"
               class="form-control"
               value={this.state.password}
+              onChange={this.handleChange}
             />
           </div>
           <button type="submit" class="btn btn-primary">
